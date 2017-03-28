@@ -1,0 +1,52 @@
+<% include ../layout/header %>
+<%if(message.length>0){%>
+<br>
+<div class="alert alert-danger"> <%=message%> </div>
+<%}%>
+<%if(successMessage.length>0){%>
+<br>
+<div class="alert alert-success"> <%=successMessage%> </div>
+<%}%>
+
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel-heading">
+            <div class="page-header">
+                <h2 ><%= myTitle %></h2>
+            </div>
+
+            <div class="panel-body">
+                <div class="panel-group">
+                    <% myProducts.forEach(function(product){%>
+                    <div class="panel panel-info col-lg-3 col-md-4 col-sm-6" style="padding: 0; margin-top: 3px; ">
+                        <div class="panel-heading"><%= product.name %></div>
+                        <div class="panel-body text-center">
+                            <img src="/<%= product.image %>" class="img-rounded" width="200">
+                            <p><%= product.description %></p><br>
+                            <p>Price : <%= product.price %></p>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="btn-group" role="group"  style=" margin-top: 1%; margin-bottom: 2%; margin-left: 50%; ">
+                                <a href="/products/edit/<%= product.id %>" class="btn btn-default btn-info">edit</a>
+                                <a href="/products/delete/<%= product.id %>" class="btn btn-default btn-danger">delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<%include ../layout/footer %>
+
+
